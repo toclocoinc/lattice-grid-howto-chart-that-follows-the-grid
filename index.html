@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to draw a chart from grid data that follows the grid's filters</title>
+    <meta
+      name="description"
+      content="One bar chart reads a twelve-row grid of deals by region. Type in the filter box and both the grid and the chart narrow to the match; click a bar and the grid narrows to that region. Built with Lattice Grid loaded by script tag, no install and no build."
+    />
+    <link rel="icon" href="data:," />
+    <!--
+      The grid's stylesheet, from jsDelivr. The address names the exact
+      release, 1.68.2, and carries the hash of the file it expects, so the
+      page can never quietly pick up a different build than the one it was
+      checked against.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.68.2/lattice-grid.min.css"
+      integrity="sha384-mcpd7S8C5nz58bZDAXdYH6rzezEhfN7B4u2SlW426dSe20GnkxTu4TygyOILnCth"
+      crossorigin="anonymous"
+    />
+    <style>
+      body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6f9; color: #131a24; }
+      header { padding: 1.5rem 1.5rem 0.5rem; max-width: 960px; margin: 0 auto; }
+      header p { color: #4a5568; }
+      header a { color: #2d6bff; }
+      main { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 2.5rem; }
+      #toolbar { margin: 0 0 0.75rem; }
+      #quick { font: inherit; padding: 0.4rem 0.75rem; border: 1px solid #ccd3dc; border-radius: 4px; width: 240px; }
+      #chart { height: 220px; margin-bottom: 0.75rem; }
+      #grid { height: 300px; }
+      #stat { font-size: 0.9rem; color: #4a5568; margin: 0.75rem 0 0; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>How to draw a chart from grid data that follows the grid's filters</h1>
+      <p>
+        Twelve deals sit in the grid below, one bar chart reading their value by region above it.
+        Type in the box and both views narrow to the match, because the chart reads the grid's own
+        filtered rows rather than a snapshot taken when it was made. Click a bar and the grid narrows
+        to that region too. Read the
+        <a href="https://www.latticegrid.dev/docs/how-to/chart-that-follows-the-grid/">full how-to</a>
+        on latticegrid.dev.
+      </p>
+    </header>
+    <main>
+      <div id="toolbar">
+        <input id="quick" type="search" placeholder="Filter rows…" aria-label="Filter rows" />
+      </div>
+      <div id="chart"></div>
+      <div id="grid"></div>
+      <p id="stat"></p>
+    </main>
+
+    <!--
+      The library and the charts module, as classic script tags. No npm
+      install, no bundler, no type="module": each file runs as it arrives.
+      The charts module extends the LatticeGrid global with createChart
+      rather than defining its own, so it must load after the core.
+    -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.68.2/lattice-grid.min.js"
+      integrity="sha384-vCzLyFYn0T0lz/vkdH4x0JpJZkOazZgI2LiGui7lm5uerdZd0Z46G9hr3Aq1FFPS"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@toclocoinc/lattice-grid@1.68.2/modules/charts.min.js"
+      integrity="sha384-vce58lKHTYTPFMiuCVxvVrB1ElDH3vgbsvT2Ou+aVSL8hllLtbAnlOS6aReXJRU/"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./demo.js"></script>
+  </body>
+</html>
